@@ -1,0 +1,34 @@
+<template>
+    <div>
+            // VARIABLES ID
+        <h3><label>ID: </label>{{ user.id }}</h3>
+            // VARIABLE NOMBRE
+        <h3><label>Nombre y Apellido: </label>{{ user.nombre }}</h3>
+            // GRUPO
+        <h3><label>Grupo: </label>{{ user.grupo }}</h3>
+            // CORREO
+        <h3><label>Correo: </label>{{ user.correo }}</h3>
+            // CONTRASEÑA
+        <h3><label>Contraseña: </label>{{ user.contra }}</h3>
+    
+    </div>
+</template>
+
+<script lang="ts" setup> 
+import PostService from '@/service/PostService';
+import { useRoute } from 'vue-router';
+import { onMounted } from 'vue';
+
+const service = new PostService()
+const user = service.getUser()
+
+    // DEFINO LO QUE ME VA ATRAER EN LA RUTA QUE ES EL CORREO 
+onMounted(async () => {
+    const router = useRoute()
+    const userCorreo = router.params.correo as string
+    await service.obtenerUser(userCorreo)
+})
+
+</script>
+
+<style scoped> </style>
