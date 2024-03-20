@@ -1,18 +1,15 @@
 import type IPost from "@/interface/IPost";
 import { ref } from "vue";
-import { Ref } from "vue";
-import Registro from '@/components/Registro.vue';
-import { PostService }
+import type { Ref } from "vue";
 
 
-// AQUI PUEDO OBTENER MI INFORMACIÓN DE MI ENV
-const url = import.meta.env.VITE_API_URL || //aqui va el IP
 
 // AQUI DECLARAS Y EXPORTAS LAS CLASES
 export default class PostService{
     //MIS DATOS QUE SEAN REACTIVOS
     private users: Ref<IPost[]>
     private user: Ref<IPost>
+    private url = 'https://utcancun.a.pinggy.online'
 
     //AQUI VA INICIAR TUS DATOS QUE TIENES
     constructor() {

@@ -2,10 +2,7 @@
     <div>
 <form v-on:submit="datos" class="errorfor">
 
-    // MENSAJE DE ERROR DE DATOS O NO EXISTE
-    <div v-if="Merror">
-        <Datos :erro1="mensaje" :error2="tipo" />
-    </div>
+
 <hr>
     // AQUI EMPIEZA LOS DATOS REQUERIDOS
     <div class="regis">
@@ -27,9 +24,9 @@
         <label for="contra"> Ingresa tu Contraseña: </label>
         <input id="contra" type="text" placeholder="" v-model="contra">
     </div>
-    // BOTON PARA GUARDAR LOS DATOS
+    
     <div class="boton">
-        <input type="enviar" value="guardar">
+        <button type="enviar" value="guardar"> GUARDAR </button>
     </div>
 
 </form>
@@ -39,9 +36,8 @@
 
 <script lang="ts" setup> 
 import { ref } from 'vue';
-import { Ref } from 'vue';
+import type { Ref } from 'vue';
 import PostService from '../service/PostService';
-import Datos from './Datos.vue';
 
 // DECLARANDO LAS VARIABLES
 let nombre:Ref<string> = ref('')

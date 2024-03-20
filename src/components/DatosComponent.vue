@@ -1,5 +1,4 @@
 <template>
-    // MENSAJE DE ALERTA DE ERROR
     <div class="alerta" :class='error2' >
         {{ error1 }}
     </div>
