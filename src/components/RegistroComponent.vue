@@ -4,29 +4,29 @@
 
 
 <hr>
-    // AQUI EMPIEZA LOS DATOS REQUERIDOS
+    <!-- AQUI EMPIEZA LOS DATOS REQUERIDOS -->
     <div class="regis">
         <label for="nombre"> Nombre y Apellido: </label>
         <input id="nombre" type="text" placeholder="" v-model="nombre">
     </div>
-    // GRUPO
+    <!-- GRUPO -->
     <div class="regis">
         <label for="grupo"> Grupo: </label>
         <input id="grupo" type="text" placeholder="" v-model="grupo">
     </div>
-    // EMAIL
+    <!-- EMAIL -->
     <div class="regis">
         <label for="correo"> Ingresa tu Correo: </label>
         <input id="correo" type="text" placeholder="" v-model="correo">
     </div>
-    // CONTRASEÑA
+    <!-- CONTRASEÑA -->
     <div class="regis">
         <label for="contra"> Ingresa tu Contraseña: </label>
         <input id="contra" type="text" placeholder="" v-model="contra">
     </div>
     
     <div class="boton">
-        <button type="enviar" value="guardar"> GUARDAR </button>
+        <button type="submit" value="guardar"> GUARDAR </button>
     </div>
 
 </form>
@@ -77,4 +77,51 @@ console.log(registro);
 
 </script>
 
-<style scoped> </style>
+<style scoped> 
+
+/* Estilos para el formulario */
+.regis {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.regis label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.regis input[type="text"],
+.regis input[type="email"],
+.regis textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.regis textarea {
+    resize: vertical;
+}
+
+/* Estilos para el botón de guardar */
+.boton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton {
+    background-color: #0056b3;
+}
+
+
+</style>

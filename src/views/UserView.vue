@@ -1,6 +1,6 @@
 <template>
     <div>
-            // VARIABLES ID
+            <!-- VARIABLES ID -->
         <h3><label>ID: </label>{{ user.id }}</h3>
             // VARIABLE NOMBRE
         <h3><label>Nombre y Apellido: </label>{{ user.name }}</h3>
