@@ -26,7 +26,7 @@
     </div>
     
     <div class="boton">
-        <button type="submit" value="guardar"> GUARDAR </button>
+        <button type="submit" value="guardar"> ENVIAR </button>
     </div>
 
 </form>
@@ -110,13 +110,14 @@ console.log(registro);
 
 /* Estilos para el botón de guardar */
 .boton {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
 }
 
 .boton {

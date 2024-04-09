@@ -4,7 +4,7 @@ import Registro from '@/components/Registro.vue';
     <h1>Usuarios:</h1>
     <ul>
       <li v-for="(user, index) in users" :key="index">
-        <RouterLink :to="{ name: 'Usuario', params: { email: user.email } }"
+        <RouterLink :to="{ name: 'Usuario', params: { email: user.email, name: user.name, grupo: user.user_group} }"
           >Correo: {{ user.email }}, Nombre y Apellido: {{ user.name }}</RouterLink>
       </li>
     </ul>

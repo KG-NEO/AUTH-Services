@@ -43,9 +43,11 @@ export default class PostService{
        }
 
        // OBTENER LOS DATOS DE UN USUARIO CON SU ALERTA DE ERROR
-       async obtenerUser(correo: string): Promise<void> {
+       async obtenerUser(correo: string,name:string,grupo:string): Promise<void> {
         try {
-            const respuesta = await fetch(this.url + '/User?' + correo)
+            console.log(correo);
+            
+            const respuesta = await fetch(this.url + '/user?email=' + correo +'&name=' + name + '&group=' + grupo )
             const resultado: IPost = await respuesta.json()
             console.log(resultado);
     
@@ -57,8 +59,18 @@ export default class PostService{
  
    // OBTENER LOS DATOS DEL REGISTRO DE USUARIO 
    async Registro(nombre: string, grupo: string, correo: string, contra:string) {
-    const respuesta = await fetch(this.url + '/Register?' + '&name=' + nombre +'&grupo=' + grupo + 'email=' + correo  + '&password=' + contra, {
-        method: 'POST'
+
+    const register = {
+        "name": nombre,
+        "user_gruop": grupo,
+        "email": correo,
+        "password": contra
+    }
+
+    const respuesta = await fetch(this.url + '/Register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(register)
     } )
     const resultado = await respuesta.json()
     console.log(resultado);
