@@ -1,128 +1,119 @@
 <template>
-    <div>
-<form v-on:submit="datos" class="errorfor">
-
-
-<hr>
-    <!-- AQUI EMPIEZA LOS DATOS REQUERIDOS -->
-    <div class="regis">
+  <div>
+    <form v-on:submit="datos" class="errorfor">
+      <hr />
+      <!-- AQUI EMPIEZA LOS DATOS REQUERIDOS -->
+      <div class="regis">
         <label for="nombre"> Nombre y Apellido: </label>
-        <input id="nombre" type="text" placeholder="" v-model="nombre">
-    </div>
-    <!-- GRUPO -->
-    <div class="regis">
+        <input id="nombre" type="text" placeholder="" v-model="nombre" />
+      </div>
+      <!-- GRUPO -->
+      <div class="regis">
         <label for="grupo"> Grupo: </label>
-        <input id="grupo" type="text" placeholder="" v-model="grupo">
-    </div>
-    <!-- EMAIL -->
-    <div class="regis">
+        <input id="grupo" type="text" placeholder="" v-model="grupo" />
+      </div>
+      <!-- EMAIL -->
+      <div class="regis">
         <label for="correo"> Ingresa tu Correo: </label>
-        <input id="correo" type="text" placeholder="" v-model="correo">
-    </div>
-    <!-- CONTRASEÑA -->
-    <div class="regis">
+        <input id="correo" type="text" placeholder="" v-model="correo" />
+      </div>
+      <!-- CONTRASEÑA -->
+      <div class="regis">
         <label for="contra"> Ingresa tu Contraseña: </label>
-        <input id="contra" type="text" placeholder="" v-model="contra">
-    </div>
-    
-    <div class="boton">
-        <button type="submit" value="guardar"> ENVIAR </button>
-    </div>
+        <input id="contra" type="text" placeholder="" v-model="contra" />
+      </div>
 
-</form>
-    </div>
-
+      <div class="boton">
+        <button @click="datos" type="submit">ENVIAR</button>
+      </div>
+    </form>
+  </div>
 </template>
 
-<script lang="ts" setup> 
-import { ref } from 'vue';
-import type { Ref } from 'vue';
-import PostService from '../service/PostService';
+<script lang="ts" setup>
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+import PostService from '../service/PostService'
 
 // DECLARANDO LAS VARIABLES
-let nombre:Ref<string> = ref('')
-let grupo:Ref<string> = ref('')
-let correo:Ref<string> = ref('')
-let contra:Ref<string> = ref('')
+let nombre: Ref<string> = ref('')
+let grupo: Ref<string> = ref('')
+let correo: Ref<string> = ref('')
+let contra: Ref<string> = ref('')
 
-     // DECLARANDO EL ERROR
-    let mensaje = ref('')
-    let tipo = ref('')
+// DECLARANDO EL ERROR
+let mensaje = ref('')
+let tipo = ref('')
 
 const service = new PostService()
 
 // INICIA EL CLICO DE LOS DATOS REQUERIDOS CON FUNCION DE ERROR
-const datos = (e: any) =>{
-    e.preventDefault();
-    
-    if([nombre.value, grupo.value, correo.value, contra.value].includes('')){
-        mensaje.value = 'Todos los campos son obligatorios, Gracias'
-        tipo.value = 'Error, Revisar los Datos'
-        return
-    }
+const datos = (e: any) => {
+  e.preventDefault()
 
-    let registro = {
-        nombre: nombre.value,
-        grupo: grupo.value,
-        correo: correo.value,
-        contra: contra.value
-    }
+  if ([nombre.value, grupo.value, correo.value, contra.value].includes('')) {
+    mensaje.value = 'Todos los campos son obligatorios, Gracias'
+    tipo.value = 'Error, Revisar los Datos'
+    return
+  }
 
-    // AQUI ESTA LA FUNCION DE SERVICIO DE REGISTRO
-console.log(registro);
+  let registro = {
+    nombre: nombre.value,
+    grupo: grupo.value,
+    correo: correo.value,
+    contra: contra.value
+  }
 
-    service.Registro(registro.nombre, registro.grupo, registro.correo, registro.contra)
+  // AQUI ESTA LA FUNCION DE SERVICIO DE REGISTRO
+  console.log(registro)
+
+  service.Registro(registro.nombre, registro.grupo, registro.correo, registro.contra)
 }
-
-
 </script>
 
-<style scoped> 
-
+<style scoped>
 /* Estilos para el formulario */
 .regis {
-    width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 .regis label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.regis input[type="text"],
-.regis input[type="email"],
+.regis input[type='text'],
+.regis input[type='email'],
 .regis textarea {
-    width: calc(100% - 12px);
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  width: calc(100% - 12px);
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .regis textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 /* Estilos para el botón de guardar */
 .boton {
-    width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
 }
 
 .boton {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
-
-
 </style>

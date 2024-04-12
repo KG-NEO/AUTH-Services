@@ -59,17 +59,22 @@ export default class PostService {
 
   // OBTENER LOS DATOS DEL REGISTRO DE USUARIO
   async Registro(nombre: string, grupo: string, correo: string, contra: string) {
-    const register = {
-      name: nombre,
-      user_gruop: grupo,
-      email: correo,
-      password: contra
-    }
+    // const register = {
+    //   name: nombre,
+    //   user_gruop: grupo,
+    //   email: correo,
+    //   password: contra
+    // }
 
-    const respuesta = await fetch(this.url + '/Register', {
+    const respuesta = await fetch(this.url + '/register/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(register)
+      body: JSON.stringify({
+        nombre,
+        grupo,
+        correo,
+        contra
+      })
     })
     const resultado = await respuesta.json()
     console.log(resultado)
