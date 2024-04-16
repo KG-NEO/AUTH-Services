@@ -7,7 +7,7 @@ export default class PostService {
   //MIS DATOS QUE SEAN REACTIVOS
   private users: Ref<IPost[]>
   private user: Ref<IPost>
-  private url = 'https://utcancun.a.pinggy.online'
+  private url = 'http://rnbdi-201-134-180-250.a.free.pinggy.link/'
 
   //AQUI VA INICIAR TUS DATOS QUE TIENES
   constructor() {
@@ -59,22 +59,17 @@ export default class PostService {
 
   // OBTENER LOS DATOS DEL REGISTRO DE USUARIO
   async Registro(nombre: string, grupo: string, correo: string, contra: string) {
-    // const register = {
-    //   name: nombre,
-    //   user_gruop: grupo,
-    //   email: correo,
-    //   password: contra
-    // }
+    const register = {
+      name: nombre,
+      user_gruop: grupo,
+      email: correo,
+      password: contra
+    }
 
     const respuesta = await fetch(this.url + '/register/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nombre,
-        grupo,
-        correo,
-        contra
-      })
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      body: JSON.stringify(register)
     })
     const resultado = await respuesta.json()
     console.log(resultado)

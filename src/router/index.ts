@@ -1,4 +1,5 @@
 import RegistroComponent from '@/components/RegistroComponent.vue'
+import LoginView from '@/views/LoginView.vue'
 import UserView from '@/views/UserView.vue'
 import UsersView from '@/views/UsersView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -21,6 +22,11 @@ const router = createRouter({
   path: '/registro',
   name: 'Registro',
   component: RegistroComponent
+},
+{
+  path: '/login',
+  name: 'Login',
+  component: LoginView
 }
 
   ]
